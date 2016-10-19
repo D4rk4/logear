@@ -5,8 +5,6 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	bl "github.com/DLag/logear/basiclogger"
-	"gopkg.in/vmihailenco/msgpack.v2"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -14,6 +12,9 @@ import (
 	"os"
 	"regexp"
 	"time"
+
+	bl "../../basiclogger"
+	"gopkg.in/vmihailenco/msgpack.v2"
 )
 
 const module = "fluentd_forwarder"
@@ -86,7 +87,9 @@ func (v *Fluentd_forwarder) Send(message *bl.Message) error {
 				continue
 			}
 		}
-		message.Data["host"] = hostname
+		if message.Data["host"] == nil || message.Data["host"] == "" {
+			message.Data["host"] = hostname
+		}
 		val := []interface{}{v.tag, now, message.Data}
 		m, err := msgpack.Marshal(val)
 		if err != nil {

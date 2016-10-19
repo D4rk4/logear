@@ -1,7 +1,7 @@
 package main
 
 import (
-	bl "github.com/DLag/logear/basiclogger"
+	bl "./basiclogger"
 )
 
 func init() {
@@ -9,6 +9,7 @@ func init() {
 }
 
 func main() {
+
 	bl.InitMessageQueue(1)
 	//Initializing filters
 	if filters, ok := cfg["filter"]; ok {
@@ -31,6 +32,12 @@ func main() {
 			bl.AddInput(bl.InitInput(input))
 		}
 	}
-	q := bl.StartMessageQueue()
+	var hostname string
+	if v, ok := cfg["main"]; ok {
+		if v, ok := v.(map[string]interface{})["hostname"]; ok {
+			hostname = v.(string)
+		}
+	}
+	q := bl.StartMessageQueue(hostname)
 	<-q
 }

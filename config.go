@@ -1,13 +1,15 @@
 package main
 
 import (
-	"github.com/BurntSushi/toml"
-	flag "github.com/docker/docker/pkg/mflag"
-	"github.com/hashicorp/logutils"
 	"io/ioutil"
 	"log"
 	"os"
 	"runtime"
+
+	"github.com/BurntSushi/toml"
+
+	flag "github.com/golang-basic/docker/pkg/mflag"
+	"github.com/hashicorp/logutils"
 )
 
 var (

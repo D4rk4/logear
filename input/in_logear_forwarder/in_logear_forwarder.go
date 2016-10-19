@@ -7,8 +7,6 @@ import (
 	"crypto/x509"
 	"encoding/binary"
 	"encoding/pem"
-	bl "github.com/DLag/logear/basiclogger"
-	"gopkg.in/vmihailenco/msgpack.v2"
 	"io"
 	"io/ioutil"
 	"log"
@@ -16,6 +14,9 @@ import (
 	"net"
 	"regexp"
 	"time"
+
+	bl "../../basiclogger"
+	"gopkg.in/vmihailenco/msgpack.v2"
 )
 
 const module = "in_logear_forwarder"

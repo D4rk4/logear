@@ -1,8 +1,6 @@
 package filetail
 
 import (
-	bl "github.com/DLag/logear/basiclogger"
-	"github.com/hpcloud/tail"
 	"io/ioutil"
 	"log"
 	"os"
@@ -10,6 +8,9 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	bl "../../basiclogger"
+	"github.com/hpcloud/tail"
 )
 
 const module = "filetail"
